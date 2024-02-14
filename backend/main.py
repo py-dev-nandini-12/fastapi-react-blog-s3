@@ -1,3 +1,6 @@
+from botocore.exceptions import NoCredentialsError
+from fastapi import FastAPI, HTTPException, Depends, File, UploadFile, Form
+from sqlalchemy import Column, Integer, String, Text, create_engine
 import os
 
 from botocore.exceptions import NoCredentialsError
@@ -10,11 +13,11 @@ from starlette.responses import FileResponse
 from sqlalchemy import create_engine
 import boto3
 
-DATABASE_URL = "postgresql://nandinichatterjee:postgresql_tutorial@localhost/events"
+DATABASE_URL = "your pymongo url"
 S3_BUCKET = "hello-blog"
-S3_REGION = "eu-west-2"
-S3_ACCESS_KEY = "AKIA5F6QMSI4SNBMJZEZ"
-S3_SECRET_KEY = "xCWuLLq3dyZxyrl+kA36zxBCfYdFot2dCz1yN6DZ"
+S3_REGION = "your aws region"
+S3_ACCESS_KEY = "your access key"
+S3_SECRET_KEY = "your secret key"
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
